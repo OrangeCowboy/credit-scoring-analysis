@@ -8,10 +8,14 @@ print("All packages loaded successfully!")
 
 
 from sqlalchemy import create_engine
-engine = create_engine("mysql+pymysql://root:*****@localhost/credit_scoring", echo=True)
+engine = create_engine("mysql+pymysql://root:SQL997s*@localhost/credit_scoring", echo=True)
 
 from sqlalchemy import text
 
-with engine.connect() as conn:
-    result = conn.execute(text("select 'hello world'"))
-    print(result.all())
+def main():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT 'hello world'"))
+        print(result.all())
+
+if __name__ == "__main__":
+    main()        
