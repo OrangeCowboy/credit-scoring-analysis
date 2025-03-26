@@ -1,8 +1,7 @@
 import pandas
+import seaborn
+import matplotlib.pyplot as plt
 from import_pandas import credit_df
-
-print(credit_df.corr())
-
 
 var1 = 'default_payment_next_month'
 var2 = 'LIMIT_BAL'
@@ -18,4 +17,10 @@ credit_df['Total_Paid'] = credit_df[['PAY_AMT1','PAY_AMT2', 'PAY_AMT3', 'PAY_AMT
 credit_df['Total_Bill'] = credit_df[['BILL_AMT1','BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6']].sum(axis=1)
 credit_df['DTI_debt'] = credit_df['Total_Bill'] / credit_df['Total_Paid']
 
+print(credit_df.corr())
+
 print((credit_df['Total_Paid'] == 0).value_counts())            # 1432 true, 5% paid $0, need to think of including 0's
+
+
+hm = seaborn.heatmap(credit_df)
+plt.show()
