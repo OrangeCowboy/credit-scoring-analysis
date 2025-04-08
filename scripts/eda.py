@@ -23,5 +23,7 @@ print(corr_matrix)
 print((credit_df['Total_Paid'] == 0).value_counts())            # 1432 true, 5% paid $0, need to think of including 0's
 
 annot = True
-hm = seaborn.heatmap(corr_matrix, annot=annot, fmt=".2f")
+plt.figure(figsize=(6,12))
+hm = seaborn.heatmap(corr_matrix[["default_payment_next_month"]], annot=annot, fmt=".2f")
+plt.tight_layout()
 plt.show()
