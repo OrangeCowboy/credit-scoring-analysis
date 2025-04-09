@@ -22,8 +22,14 @@ print(corr_matrix)
 
 print((credit_df['Total_Paid'] == 0).value_counts())            # 1432 true, 5% paid $0, need to think of including 0's
 
+
+# heatmap ---
 annot = True
 plt.figure(figsize=(6,12))          # larger plot size so all columns labels show correctly
 hm = seaborn.heatmap(corr_matrix[["default_payment_next_month"]], annot=annot, fmt=".2f")
 plt.tight_layout()          # helps stop clipping
+plt.show()
+
+# countplot ---
+seaborn.countplot(x="PAY_0", hue="default_payment_next_month", data=credit_df)
 plt.show()
